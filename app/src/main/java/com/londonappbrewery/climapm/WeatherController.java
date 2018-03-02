@@ -90,6 +90,7 @@ public class WeatherController extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 Log.d("Clima", "onLocationChanged() callback received");
+
                 String longitude = String.valueOf(location.getLongitude());
                 String latitude = String.valueOf(location.getLatitude());
 
@@ -159,7 +160,10 @@ public class WeatherController extends AppCompatActivity {
 
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
+
                 Log.d("Clima", "Success! JSON " + response.toString());
+
+                WeatherDataModel weatherData = WeatherDataModel.fromJson(response);
             }
 
             @Override
